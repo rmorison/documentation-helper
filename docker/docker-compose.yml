@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  documentation_helper:
+    image: documentation-helper
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: documentation-helper
+    env_file: .env
+    ports:
+      - 15000:15000
