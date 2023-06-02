@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "documentation-helper"
+version = "0.1.0"
+description = ""
+authors = ["Rod Morison <rmorison@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "documentation_helper"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "*"
+beautifulsoup4 = "*"
+black = "*"
+tiktoken = "*"
+openai = "*"
+pinecone-client = "*"
+unstructured = "*"
+nltk = "*"
+fastapi = "*"
+jinja2 = "*"
+uvicorn = "*"
+streamlit = "*"
+streamlit-chat = "*"
+tqdm = "*"
+python-dotenv = "^1.0.0"
+rich = "^13.4.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+mypy = "^1.3.0"
+debugpy = "^1.6.7"
+pylint = "^2.17.4"
+python-lsp-server = "^1.7.3"
+python-lsp-black = "^1.3.0"
+pyls-isort = "^0.2.2"
+isort = "^5.12.0"
+pylsp-mypy = "^0.6.6"
+flake8 = "^6.0.0"
+watchdog = "^3.0.0"
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
