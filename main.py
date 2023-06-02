@@ -4,10 +4,14 @@ from backend.core import run_llm
 import streamlit as st
 from streamlit_chat import message
 
-st.header("LangChain Udemy Course- Documentation Helper Bot")
+st.set_page_config(page_title="CNote Chat", page_icon=":robot:")
+st.header("CNote GPT Demo")
+st.markdown("[CNote](https://www.mycnote.com/)")
 
 
-prompt = st.text_input("Prompt", placeholder="Enter your prompt here..")
+prompt = st.text_input(
+    "What can I tell you about CNote?", placeholder="Ask Away!"
+)
 
 if "user_prompt_history" not in st.session_state:
     st.session_state["user_prompt_history"] = []
@@ -17,6 +21,10 @@ if "chat_answers_history" not in st.session_state:
 
 if "chat_history" not in st.session_state:
     st.session_state["chat_history"] = []
+
+
+def get_text():
+    input = st.text_input
 
 
 def create_sources_string(source_urls: Set[str]) -> str:
@@ -52,8 +60,8 @@ if prompt:
 
 if st.session_state["chat_answers_history"]:
     for generated_response, user_query in zip(
-        st.session_state["chat_answers_history"],
-        st.session_state["user_prompt_history"],
+        reversed(st.session_state["chat_answers_history"]),
+        reversed(st.session_state["user_prompt_history"]),
     ):
         message(user_query, is_user=True)
         message(generated_response)
